@@ -1,0 +1,23 @@
+{
+  "name": "rdd.js",
+  "version": "0.0.1",
+  "description": "A node.js lib to process files/data like spark rdd.",
+  "main": "lib/rdd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talrasha007/rdd.js.git"
+  },
+  "keywords": [
+    "rdd",
+    "spark"
+  ],
+  "author": "Tal Rasha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talrasha007/rdd.js/issues"
+  },
+  "homepage": "https://github.com/talrasha007/rdd.js#readme",
+  "dependencies": {
+    "co-stream": "^0.2.0"
+  }
+}
