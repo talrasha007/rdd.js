@@ -1,6 +1,6 @@
 {
   "name": "rdd.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node.js lib to process files/data like spark rdd.",
   "main": "lib/rdd.js",
   "repository": {
