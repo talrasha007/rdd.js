@@ -40,6 +40,7 @@ rdd.saveAsJsonFile('blabla');
 const RDD = require('rdd.js');
 
 const rdd = RDD.fromTextFile(`${__dirname}/iterable.js`);
+// Path can use wildcard. eg. '/tmp/*.txt'
 rdd.filter(l => l).forEach(console.log); // non-empty line
 
 RDD.fromJsonFile('/tmp/foo.json').forEach(console.log); // Read from json file.
