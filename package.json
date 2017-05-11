@@ -1,6 +1,6 @@
 {
   "name": "rdd.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A node.js lib to process files/data like spark rdd.",
   "main": "lib/rdd.js",
   "repository": {
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/talrasha007/rdd.js#readme",
   "dependencies": {
-    "co-stream": "^0.2.0"
+    "co-stream": "^0.2.0",
+    "glob": "^7.1.1",
+    "multistream": "^2.1.0"
   }
 }
