@@ -25,4 +25,5 @@ const RDD = require('..');
     .forEach(console.log);
 
   console.log(await rdd.count());
+  console.log(await rdd.collect());
 })().catch(e => console.log(e.stack));

@@ -11,6 +11,7 @@ const rdd = RDD.fromIterable([1, 2, 3, 4, 5]); // create rdd from iterable.
 rdd.reduce((m, i) => m + i).then(console.log); // sum of the items.
 
 rdd.count().then(console.log);
+rdd.collect().then(console.log);
 
 rdd
   .map(i => [i % 2, i * 2])
