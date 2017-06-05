@@ -24,6 +24,9 @@ rdd
     .reduceByKey((m, v) => m + v)
     .forEach(console.log);
 
+rdd.flatMap(i => [i, i + 1])
+  .forEach(console.log);
+
 rdd
     .groupBy(i => i % 2)
     .forEach(console.log);

@@ -24,6 +24,10 @@ const RDD = require('..');
     .groupByKey()
     .forEach(console.log);
 
+  await rdd
+    .flatMap(i => [i, i + 1, i + 2])
+    .forEach(console.log);
+
   console.log(await rdd.count());
   console.log(await rdd.collect());
 })().catch(e => console.log(e.stack));
