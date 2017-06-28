@@ -30,4 +30,7 @@ const RDD = require('..');
 
   console.log(await rdd.count());
   console.log(await rdd.collect());
+
+  console.log('rdd.toStream');
+  rdd.map(i => i.toString()).toStream().pipe(process.stdout);
 })().catch(e => console.log(e.stack));
