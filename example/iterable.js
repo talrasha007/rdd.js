@@ -33,4 +33,16 @@ const RDD = require('..');
 
   console.log('rdd.toStream');
   rdd.map(i => i.toString()).toStream().pipe(process.stdout);
+
+  const csvRdd = RDD
+    .fromCsvFile('./test.csv')
+
+  await csvRdd.forEach(console.log);
+  csvRdd.saveAsJsonFile('./test.json').then(() => {
+    console.log('===================');
+    RDD.fromJsonFile('./test.json').forEach(console.log);
+  })
+
+  csvRdd.saveAsCsvFile('./result.csv')
+
 })().catch(e => console.log(e.stack));
