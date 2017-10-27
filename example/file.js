@@ -1,4 +1,5 @@
 const RDD = require('..');
+const os = require('os');
 
 (async function () {
   const rdd = RDD.fromTextFile(`${__dirname}/iterable.js`);
@@ -6,26 +7,27 @@ const RDD = require('..');
   rdd.filter(l => l).forEach(console.log);
 
   const cntRdd = rdd.filter(l => l)
-    .map(l => ({ lineWordCount: l.split(/\s+/).length }));
+    .map(l => ({ lineWordCount: l.split(/\s+/).length, isLongStatement: l.split(/\s+/).length > 10 }));
 
   cntRdd.forEach(console.log);
 
-  rdd.saveAsTextFile('/tmp/foo.txt');
-  cntRdd.saveAsJsonFile('/tmp/foo.json').then(() => {
-    console.log('===================');
-    RDD.fromJsonFile('/tmp/foo.json').forEach(console.log);
+  rdd.saveAsTextFile(`${os.tmpdir()}/foo.txt`);
+  cntRdd.saveAsJsonFile(`${os.tmpdir()}/foo.json`).then(() => {
+    console.log('==========foo.json==========');
+    RDD.fromJsonFile(`${os.tmpdir()}/foo.json`).forEach(console.log);
   });
 
-  // test for csv file
-  const csvRdd = RDD
-    .fromCsvFile('./file/input.csv');
+  cntRdd.saveAsCsvFile(`${os.tmpdir()}/foo.csv`);
 
+  // test for csv file
+  const csvRdd = RDD.fromCsvFile(`${os.tmpdir()}/foo.csv`);
   await csvRdd.forEach(console.log);
-  csvRdd.saveAsJsonFile('./file/test.json').then(() => {
-    console.log('===================');
-    RDD.fromJsonFile('./file/test.json').forEach(console.log);
+
+  csvRdd.saveAsJsonFile(`${os.tmpdir()}/test.json`).then(() => {
+    console.log('=========test.json=========');
+    RDD.fromJsonFile(`${os.tmpdir()}/test.json`).forEach(console.log);
   })
 
-  csvRdd.saveAsCsvFile('./file/test.csv');
+  csvRdd.saveAsCsvFile(`${os.tmpdir()}/test.csv`);
 
 })().catch(e => console.log(e.stack));
