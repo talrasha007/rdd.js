@@ -26,7 +26,7 @@ const os = require('os');
   csvRdd.saveAsJsonFile(`${os.tmpdir()}/test.json`).then(() => {
     console.log('=========test.json=========');
     RDD.fromJsonFile(`${os.tmpdir()}/test.json`).forEach(console.log);
-  })
+  });
 
   csvRdd.saveAsCsvFile(`${os.tmpdir()}/test.csv`);
 
