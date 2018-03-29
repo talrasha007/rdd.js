@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/talrasha007/rdd.js#readme",
   "dependencies": {
-    "co-stream": "~0.3.2",
+    "co-stream": "^0.3.2",
     "glob": "~7.1.2",
     "multistream": "~2.1.0"
+  },
+  "devDependencies": {
+    "co-lodash": "^0.2.0"
   }
 }
