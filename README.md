@@ -2,6 +2,26 @@
 If you are using spark, you will feel RDD is very convenient to use, this lib will help you to feel good again when you are using js to process data.
 
 ```js
+// parallel execution for async call.
+const _ = require('co-lodash');
+const RDD = require('rdd.js');
+
+(async function () {
+  function *iterator() {
+    for (let i = 0; i < 64; i++) yield i;
+  }
+
+  const rdd = RDD.fromIterable(iterator());
+  rdd
+    .parallel(4)
+    .forEach(async i => {
+      await _.sleep(Math.random() * 1000);
+      console.log(i);
+    });
+})().catch(e => console.log(e.stack));
+```
+
+```js
 // count/forEach/reduce/save* api will return a promise.
 
 const RDD = require('rdd.js');
