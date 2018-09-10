@@ -24,7 +24,7 @@ const os = require('os');
   await cntRdd.saveAsCsvFile(`${os.tmpdir()}/foo.csv`);
 
   console.log(`==========foo.csv==========`);
-  const csvRdd = RDD.fromCsvFile(`${os.tmpdir()}/foo.csv`, { columns: true });
+  const csvRdd = RDD.fromCsvFile(`${os.tmpdir()}/foo.csv`);
   await csvRdd.forEach(console.log);
 
   await csvRdd.saveAsJsonFile(`${os.tmpdir()}/test.json`);
