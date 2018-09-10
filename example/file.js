@@ -31,6 +31,9 @@ const os = require('os');
   console.log('=========test.json=========');
   await RDD.fromJsonFile(`${os.tmpdir()}/test.json`).forEach(console.log);
 
-  csvRdd.saveAsCsvFile(`${os.tmpdir()}/test.csv`);
-
+  console.log('==========specify header==========');
+  await csvRdd.saveAsCsvFile(`${os.tmpdir()}/test.csv`, { header: false });
+  await RDD
+    .fromCsvFile(`${os.tmpdir()}/test.csv`, { columns: ['wcnt', 'lf'] })
+    .forEach(console.log);
 })().catch(e => console.log(e.stack));
